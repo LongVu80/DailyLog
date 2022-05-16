@@ -59,14 +59,8 @@ document.querySelector('#new-report').addEventListener('submit', function (e) {
     localStorage.setItem('reports', JSON.stringify(reports))
     renderReports(reports, filters)
     e.target.elements.report.value = ''
-    setTimeout(function () {
-        location.reload()
-    }, 2000);
+    
 })
-
-// setTimeout(function () {
-//         location.reload()
-//     }, 1000);
 
 const reload = function(){
     location.reload();
@@ -76,12 +70,12 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
     filters.searchText = e.target.value
     renderReports(reports, filters)
 })
-
-// $("#search-text").on("keyup", function(){
+// $(document).ready(function() {
+// $("#search-text2").on("keyup", function(){
 //     let value = $(this).val();
 //     $("#log").each(function(records){
 //       if(records !== -1){
-//         let id=$(this).find("#Time${d}").text();
+//         let id=$(this).find("#duty").text();
 //       if(id.indexOf(value)!==0 && id.toLowerCase().indexOf(value.toLowerCase())<0){
 //         $(this).hide();
 //       } else {
@@ -91,3 +85,4 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
       
 //     })
 //   })
+// })

@@ -10,7 +10,7 @@
 <body>
     <div class="header">
         <div class="left">DailyLog<br>
-        Amazon</div>
+        <strong>Amazon</strong></div>
         <div class="right">
             <a href="index.html">New Log</a>
             <a href="dashboard.html">Dashboard</a>
@@ -81,11 +81,13 @@
         </form>
         <hr>
         <!-- <div id="date" value="Date()"></div> -->
-        <div id="log" style="display: none;"></div>
-        
-        
-        
+        <div >
+            Date search:
+            <input id="search-text" type="text" placeholder="Filter Report">
+        </div>
+        <hr>
     </div>
+    <div id="log"></div>
     <script src="script.js"></script>
 </body>
 </html>
