@@ -1,5 +1,6 @@
 let reports = [];
 
+
 const filters = {
     searchText: ''
 }
@@ -27,9 +28,10 @@ const renderReports = function(reports, filters){
     // localStorage.setItem('date', JSON.stringify(d))
         const p = document.createElement('p');
         //   ${d} <br> <br>
-        p.innerHTML = `<div id="result">Wrote on: ${report.Time} <br> <br> Shift: ${report.Shift}, Period: ${report.Period}, Duty: ${report.Duty} <br> Log: ${report.Report}</div>`
+        p.innerHTML = `<div id="result">Wrote on: ${report.Time} <br> <br> Shift: ${report.Shift} -- Period: ${report.Period} -- Duty: ${report.Duty} <br> Log: ${report.Report}</div>`
         document.querySelector('#log').appendChild(p)
     })
+    
 }
 
 renderReports(reports, filters)
@@ -44,12 +46,12 @@ renderReports(reports, filters)
 
 document.querySelector('#new-report').addEventListener('submit', function (e) {
     e.preventDefault()
-    const d = new Date()
+    const d = moment()
         const summary = document.createElement('p');
     summary.textContent = `Wrote on:${d}`
     document.querySelector('#logTime').appendChild(summary)
     reports.push({
-        Time: d,
+        Time: d.toString(),
         Shift: e.target.elements.shift.value,
         Period: e.target.elements.period.value,
         Duty: e.target.elements.duty.value,
@@ -59,30 +61,18 @@ document.querySelector('#new-report').addEventListener('submit', function (e) {
     localStorage.setItem('reports', JSON.stringify(reports))
     renderReports(reports, filters)
     e.target.elements.report.value = ''
-    
 })
-
-const reload = function(){
-    location.reload();
-}
 
 document.querySelector('#search-text').addEventListener('input', function (e) {
     filters.searchText = e.target.value
     renderReports(reports, filters)
 })
-// $(document).ready(function() {
-// $("#search-text2").on("keyup", function(){
-//     let value = $(this).val();
-//     $("#log").each(function(records){
-//       if(records !== -1){
-//         let id=$(this).find("#duty").text();
-//       if(id.indexOf(value)!==0 && id.toLowerCase().indexOf(value.toLowerCase())<0){
-//         $(this).hide();
-//       } else {
-//         $(this).show();
-//       }
-//       }
-      
+
+// const sort = function(){
+//     reports.Time.sort(function(a, b){
+//         if(a > b){return 1}
+//         if(a < b){return -1}
+//         return 0
 //     })
-//   })
-// })
+//     renderReports(reports, filters)
+// }
