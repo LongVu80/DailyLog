@@ -63,6 +63,10 @@ document.querySelector('#new-report').addEventListener('submit', function (e) {
     e.target.elements.report.value = ''
 })
 
+const refresh = function(){
+    location.reload()
+}
+
 document.querySelector('#search-text').addEventListener('input', function (e) {
     filters.searchText = e.target.value
     renderReports(reports, filters)
