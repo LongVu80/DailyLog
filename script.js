@@ -15,17 +15,8 @@ const renderReports = function(reports, filters){
         return report.Time.toLowerCase().includes(filters.searchText.toLowerCase())
     })
     document.querySelector('#log').innerHTML = '';
-    
-    // const summary = document.createElement('p');
-    // summary.textContent = `Wrote on ${d}`
-    // document.querySelector('#log').appendChild(summary);
 
     filterReports.forEach(function(report){
-        // const d = new Date()
-    //     const summary = document.createElement('p');
-    // summary.textContent = `Wrote on: ${d}`
-    // document.querySelector('#log').appendChild(summary)
-    // localStorage.setItem('date', JSON.stringify(d))
         const p = document.createElement('p');
         //   ${d} <br> <br>
         p.innerHTML = `<div id="result">Wrote on: ${report.Time} <br> <br> Shift: ${report.Shift} -- Period: ${report.Period} -- Duty: ${report.Duty} <br> Log: ${report.Report}</div>`
@@ -36,13 +27,22 @@ const renderReports = function(reports, filters){
 
 renderReports(reports, filters)
 
-// const time = function(){
-//     const d = new Date()
-//         const summary = document.createElement('p');
-//     summary.innerHTML = `<div id="time" value="${d}">${d}</div>`
-//     document.querySelector('#logTime').appendChild(summary)
+const renderReports2 = function(reports, filters){
+    const filterReports = reports.filter(function(report){
+        return report.Duty.toLowerCase().includes(filters.searchText.toLowerCase())
+    })
+    document.querySelector('#log').innerHTML = '';
+
+    filterReports.forEach(function(report){
+        const p = document.createElement('p');
+        //   ${d} <br> <br>
+        p.innerHTML = `<div id="result">Wrote on: ${report.Time} <br> <br> Shift: ${report.Shift} -- Period: ${report.Period} -- Duty: ${report.Duty} <br> Log: ${report.Report}</div>`
+        document.querySelector('#log').appendChild(p)
+    })
     
-// }
+}
+
+renderReports2(reports, filters)
 
 document.querySelector('#new-report').addEventListener('submit', function (e) {
     e.preventDefault()
@@ -66,6 +66,11 @@ document.querySelector('#new-report').addEventListener('submit', function (e) {
 document.querySelector('#search-text').addEventListener('input', function (e) {
     filters.searchText = e.target.value
     renderReports(reports, filters)
+})
+
+document.querySelector('#search-text2').addEventListener('input', function (e) {
+    filters.searchText = e.target.value
+    renderReports2(reports, filters)
 })
 
 // const sort = function(){
