@@ -68,13 +68,16 @@ div {
     padding: 15px;
     margin: auto;
 }
-
-#sort {
-    background-color: blue;
-    color: white;
+#search{
+    width: 350px;
 }
+
 
 #log {
     display: flex;
     flex-direction: column-reverse;
+}
+
+#about{
+    text-align: center;
 }

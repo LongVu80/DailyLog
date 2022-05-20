@@ -80,10 +80,12 @@
                    
         </div>
         
-        <button onclick="refresh()">Add Report</button>
+        <button>Add Report</button>
         </form>
         <hr>
-        <div >
+        <div id="search">
+            
+            <div>
             Date search:
             <input id="search-text" type="text" placeholder="Filter Report">
         </div>
@@ -93,9 +95,15 @@
             <input id="search-text2" type="text" placeholder="Filter Report">
         </div>
         <hr>
+        </div>
+        
         <!-- <button onclick="sort()" id="sort">Sort Newest Log</button> -->
     </div>
     <div id="log"></div>
+    <div id="about">
+        Created by Long Vu on May 16, 2022<br>
+        Copyright © All Right Reversed
+    </div>
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js"></script>
 </body>
