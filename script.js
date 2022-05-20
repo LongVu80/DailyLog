@@ -36,7 +36,7 @@ const renderReports2 = function(reports, filters){
     filterReports.forEach(function(report){
         const p = document.createElement('p');
         //   ${d} <br> <br>
-        p.innerHTML = `<div id="result">Wrote on: ${report.Time} <br> <br> Shift: ${report.Shift} -- Period: ${report.Period} -- Duty: ${report.Duty} <br> Log: ${report.Report}</div>`
+        p.innerHTML = `<div id="result">Wrote on: ${report.Time} <br> <br> Shift: ${report.Shift}  ||  Period: ${report.Period}  ||  Duty: ${report.Duty} <br> Log: ${report.Report}</div>`
         document.querySelector('#log').appendChild(p)
     })
     
@@ -47,6 +47,8 @@ renderReports2(reports, filters)
 document.querySelector('#new-report').addEventListener('submit', function (e) {
     e.preventDefault()
     const d = moment()
+    const timeStamp = moment().valueOf();
+
         const summary = document.createElement('p');
     summary.textContent = `Wrote on:${d}`
     document.querySelector('#logTime').appendChild(summary)
@@ -56,7 +58,7 @@ document.querySelector('#new-report').addEventListener('submit', function (e) {
         Period: e.target.elements.period.value,
         Duty: e.target.elements.duty.value,
         Report: e.target.elements.report.value,
-        
+        createdAt: timeStamp
     })
     localStorage.setItem('reports', JSON.stringify(reports))
     renderReports(reports, filters)
@@ -64,7 +66,8 @@ document.querySelector('#new-report').addEventListener('submit', function (e) {
 })
 
 const refresh = function(){
-    location.reload()
+    setTimeout(function(){
+        location.reload()}, 1000)
 }
 
 document.querySelector('#search-text').addEventListener('input', function (e) {
@@ -78,10 +81,14 @@ document.querySelector('#search-text2').addEventListener('input', function (e) {
 })
 
 // const sort = function(){
-//     reports.Time.sort(function(a, b){
-//         if(a > b){return 1}
-//         if(a < b){return -1}
-//         return 0
+//     reports.sort(function(a, b){
+//         if(a.createdAt > b.createdAt){
+//             return -1
+//         } else if(a.createdAt < b.createdAt){
+//             return 1
+//         } else {
+//             return 0
+//         }
 //     })
 //     renderReports(reports, filters)
 // }

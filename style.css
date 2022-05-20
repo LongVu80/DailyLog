@@ -68,3 +68,13 @@ div {
     padding: 15px;
     margin: auto;
 }
+
+#sort {
+    background-color: blue;
+    color: white;
+}
+
+#log {
+    display: flex;
+    flex-direction: column-reverse;
+}
