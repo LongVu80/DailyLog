@@ -35,9 +35,11 @@
         <!-- <button onclick="time()">Click for Time</button> -->
         
         <form id="new-report">
-           <div id="logTime">
-               
-           </div>
+           <!-- <div id="logTime"></div> -->
+           <div class="Date">
+            Select date to report: <br>
+            <input type="date" id="date" name="date"> 
+        </div>
         <div class="shift">
             Select Your Shift:<br>
                 <select id="shift">
@@ -80,7 +82,7 @@
                    
         </div>
         
-        <button>Add Report</button>
+        <button onclick="refresh()">Add Report</button>
         </form>
         <hr>
         <div id="search">
@@ -102,7 +104,7 @@
     <div id="log"></div>
     <div id="about">
         Created by Long Vu on May 16, 2022<br>
-        Copyright © All Right Reversed
+        Copyright © All Rights Reversed
     </div>
     <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js"></script>

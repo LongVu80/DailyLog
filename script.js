@@ -12,14 +12,14 @@ if (reportJSON !== null){
 
 const renderReports = function(reports, filters){
     const filterReports = reports.filter(function(report){
-        return report.Time.toLowerCase().includes(filters.searchText.toLowerCase())
+        return report.Time.toLowerCase().includes(filters.searchText.toLowerCase()) || report.Date.toLowerCase().includes(filters.searchText.toLowerCase())
     })
     document.querySelector('#log').innerHTML = '';
 
     filterReports.forEach(function(report){
         const p = document.createElement('p');
         //   ${d} <br> <br>
-        p.innerHTML = `<div id="result">Wrote on: ${report.Time} <br> <br> Shift: ${report.Shift} -- Period: ${report.Period} -- Duty: ${report.Duty} <br> Log: ${report.Report}</div>`
+        p.innerHTML = `<div id="result">Wrote on: ${report.Time} <hr> Report Date:${report.Date}<br> Shift: ${report.Shift} -- Period: ${report.Period} -- Duty: ${report.Duty} <br> Log: ${report.Report}</div>`
         document.querySelector('#log').appendChild(p)
     })
     
@@ -36,7 +36,7 @@ const renderReports2 = function(reports, filters){
     filterReports.forEach(function(report){
         const p = document.createElement('p');
         //   ${d} <br> <br>
-        p.innerHTML = `<div id="result">Wrote on: ${report.Time} <br> <br> Shift: ${report.Shift}  ||  Period: ${report.Period}  ||  Duty: ${report.Duty} <br> Log: ${report.Report}</div>`
+        p.innerHTML = `<div id="result">Wrote on: ${report.Time} <hr> Report Date:${report.Date} <br> Shift: ${report.Shift}  ||  Period: ${report.Period}  ||  Duty: ${report.Duty} <br> Log: ${report.Report}</div>`
         document.querySelector('#log').appendChild(p)
     })
     
@@ -49,11 +49,12 @@ document.querySelector('#new-report').addEventListener('submit', function (e) {
     const d = moment()
     const timeStamp = moment().valueOf();
 
-        const summary = document.createElement('p');
-    summary.textContent = `Wrote on:${d}`
-    document.querySelector('#logTime').appendChild(summary)
+    //     const summary = document.createElement('p');
+    // summary.textContent = `Wrote on:${d}`
+    // document.querySelector('#logTime').appendChild(summary)
     reports.push({
         Time: d.toString(),
+        Date: e.target.elements.date.value,
         Shift: e.target.elements.shift.value,
         Period: e.target.elements.period.value,
         Duty: e.target.elements.duty.value,
