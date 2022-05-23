@@ -20,7 +20,7 @@ const renderReports = function(reports, filters){
     filterReports.forEach(function(report){
         const p = document.createElement('p');
         //   ${d} <br> <br>
-        p.innerHTML = `<div id="result">Wrote on: ${report.Time} <hr> Report Date:${report.Date}<br> Shift: ${report.Shift} -- Period: ${report.Period} -- Duty: ${report.Duty} <br> Log: ${report.Report}</div>`
+        p.innerHTML = `<div id="result">Wrote on: ${report.Time} <br><br> Shift: ${report.Shift} -- Period: ${report.Period} -- Duty: ${report.Duty} <br> Log: ${report.Report}</div>`
         document.querySelector('#log').appendChild(p)
     })
     
@@ -37,7 +37,7 @@ const renderReports2 = function(reports, filters){
     filterReports.forEach(function(report){
         const p = document.createElement('p');
         //   ${d} <br> <br>
-        p.innerHTML = `<div id="result">Wrote on: ${report.Time} <hr> Report Date:${report.Date} <br> Shift: ${report.Shift}  ||  Period: ${report.Period}  ||  Duty: ${report.Duty} <br> Log: ${report.Report}</div>`
+        p.innerHTML = `<div id="result">Wrote on: ${report.Time} <br> <br> Shift: ${report.Shift}  ||  Period: ${report.Period}  ||  Duty: ${report.Duty} <br> Log: ${report.Report}</div>`
         document.querySelector('#log').appendChild(p)
     })
     
