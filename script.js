@@ -12,7 +12,8 @@ if (reportJSON !== null){
 
 const renderReports = function(reports, filters){
     const filterReports = reports.filter(function(report){
-        return report.Time.toLowerCase().includes(filters.searchText.toLowerCase()) || report.Date.toLowerCase().includes(filters.searchText.toLowerCase())
+        return report.Time.toLowerCase().includes(filters.searchText.toLowerCase()) 
+        // || report.Date.toLowerCase().includes(filters.searchText.toLowerCase())
     })
     document.querySelector('#log').innerHTML = '';
 
@@ -54,7 +55,7 @@ document.querySelector('#new-report').addEventListener('submit', function (e) {
     // document.querySelector('#logTime').appendChild(summary)
     reports.push({
         Time: d.toString(),
-        Date: e.target.elements.date.value,
+        // Date: e.target.elements.date.value,
         Shift: e.target.elements.shift.value,
         Period: e.target.elements.period.value,
         Duty: e.target.elements.duty.value,
